@@ -1,0 +1,199 @@
+﻿<Window x:Class="Projekt_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#252541">
+
+
+    <Window.Resources>
+        <!-- Logo -->
+        <Style x:Key="logo" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontFamily" Value="Showcard Gothic" />
+            <Setter Property="FontWeight" Value="DemiBold" />
+            <Setter Property="Foreground" Value="#d3d3d3" />
+            <Setter Property="Background" Value="#131321" />
+            <Setter Property="Padding" Value="0,13,0,0" />
+        </Style>
+        <!-- RadioButton -->
+        <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+               TargetType="{x:Type RadioButton}"
+               x:Key="RadioButton">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Grid VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  Background="{TemplateBinding Background}">
+
+                                <TextBlock Text="{TemplateBinding Property=Content}"
+                                           VerticalAlignment="Center"/>
+
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#47477A"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="#6C6CBA"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Zamknij -->
+        <Style x:Key="zamknij" TargetType="Button">
+            <Setter Property="FontFamily" Value="Carlito"/>
+            <Setter Property="Background" Value="#FE6584"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="#d3d3d3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF4C70"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+
+    <Grid>
+        <Grid Margin="-1,0,1,0">
+            <!--Ustawienie Siatki-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            
+            <!--Pasek-->
+            <Grid Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Background="#131321"
+                  MouseDown="Pasek">
+
+                <StackPanel Orientation="Horizontal"/>
+
+                <Grid Grid.Column="0" Grid.Row="0"/>
+                <Grid Grid.Row="0">
+                    <Button Content="Zamknij"
+                            Style="{StaticResource ResourceKey=zamknij}" 
+                            Margin="820,0,0,0" 
+                            Click="Zamknij">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="100" 
+                                        Height="25"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <!--Logo-->
+            <TextBlock Text="   Panel" 
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       Style="{StaticResource logo}"/>
+            <!--Menu-->
+            <Grid Grid.Column="0"
+                  Grid.Row="2"
+                  Background="#131321">
+                <StackPanel>
+                    <RadioButton Content="        Kalkulator"
+                                 Height="50"
+                                 Foreground="#d3d3d3"
+                                 FontFamily="Carlito"
+                                 FontSize="18"
+                                 Style="{StaticResource RadioButton}" 
+                                 Cursor="Hand"
+                                 Click="Kalkulator"/>
+                    <RadioButton Content="        Eksploator Plików"
+                                 Height="50"
+                                 Foreground="#d3d3d3"
+                                 FontFamily="Carlito"
+                                 FontSize="18"
+                                 Style="{StaticResource RadioButton}"
+                                 Cursor="Hand"
+                                 Click="EksploatorPlikow"/>
+                    <RadioButton Content="        Przeglądarka"
+                                 Height="50"
+                                 Foreground="#d3d3d3"
+                                 FontFamily="Carlito"
+                                 FontSize="18"
+                                 Style="{StaticResource RadioButton}"
+                                 Cursor="Hand"
+                                 Click="Przeglodarka"/>
+                    <RadioButton Content="        Kółko i Krzyżyk"
+                                 Height="50"
+                                 Foreground="#d3d3d3"
+                                 FontFamily="Carlito"
+                                 FontSize="18"
+                                 Style="{StaticResource RadioButton}"
+                                 Cursor="Hand"
+                                 Click="KolkoIKrzyzyk"/>
+                    <RadioButton Content="        Paint"
+                                 Height="50"
+                                 Foreground="#d3d3d3"
+                                 FontFamily="Carlito"
+                                 FontSize="18"
+                                 Style="{StaticResource RadioButton}"
+                                 Cursor="Hand"
+                                 Click="Paint"/>
+                    <RadioButton Content="        Aim Trainer"
+                                 Height="50"
+                                 Foreground="#d3d3d3"
+                                 FontFamily="Carlito"
+                                 FontSize="18"
+                                 Style="{StaticResource RadioButton}"
+                                 Cursor="Hand"
+                                 Click="AimTrainer"/>
+                </StackPanel>
+            </Grid>
+
+            
+            <!--Główna Siatka NIE Przełączona-->
+            <Grid Grid.Column="1"
+                  Grid.Row="1"
+                  Grid.RowSpan="3"
+                  Name="Panel">
+                <TextBlock Text="PANEL STEROWANIA"
+                           Style="{StaticResource logo}"
+                           Background="#252541"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="64px"
+                           Height="169" FontStyle="Normal"/>
+            </Grid>
+            <!--Główna Siatka Już Przełączona-->
+            <Frame x:Name="MainWindowFrame" 
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Grid.RowSpan="2"
+                   NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>

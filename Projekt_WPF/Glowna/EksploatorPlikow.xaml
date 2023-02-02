@@ -1,0 +1,109 @@
+﻿<Page x:Class="Projekt_WPF.Glowna.EksploatorPlikow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekt_WPF.Glowna"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EksploatorPlikow">
+
+    <Page.Resources>
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontFamily" Value="Carlito"/>
+            <Setter Property="Foreground" Value="#d3d3d3"/>
+            <Setter Property="Background" Value="#131321"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="#d3d3d3" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF333365"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="textBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontFamily" Value="Carlito"/>
+            <Setter Property="Foreground" Value="#d3d3d3"/>
+            <Setter Property="Background" Value="#131321"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0,5"/>
+        </Style>
+        <Style x:Key="textBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontFamily" Value="Carlito"/>
+            <Setter Property="Foreground" Value="#d3d3d3"/>
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid Margin="15,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="115"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+
+            <Button Content="&lt;-"
+                    Click="strzalkaLewo"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="3"
+                    Style="{StaticResource button}"/>
+            <Button Content="-&gt;"
+                    Click="strzalkaPrawo"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="3"
+                    Style="{StaticResource button}"/>
+            <TextBlock Text="Ścieżka: "
+                       Grid.Column="2"
+                       Grid.Row="0"
+                       Margin="7"
+                       Style="{StaticResource textBlock}"/>
+            <TextBox Grid.Column="3"
+                     Text="C:/"
+                     Name="txtBox"
+                     Grid.Row="0"
+                     Margin="3"
+                     Style="{StaticResource textBox}"/>
+            <Button Content="Otwórz"
+                    Click="otworz"
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    Margin="3"
+                    Style="{StaticResource button}"/>
+            <WebBrowser Grid.Column="0"
+                        Grid.Row="1"
+                        Name="webBrowser"
+                        Grid.ColumnSpan="5"
+                        Margin="3"
+                        Loaded="W_Loaded"/>
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="5"
+                       Name="stopka"
+                       Margin="7,2"
+                       FontSize="20"
+                       Style="{StaticResource textBlock}"/>
+        </Grid>
+    </Grid>
+</Page>
